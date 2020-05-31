@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   black: '#484848',
   darkGray: 'rgba(0,0,0,.5)',
   semiGray: 'rgba(0,0,0,.2)',
@@ -14,9 +14,15 @@ const breakpoints = {
   lg: 992,
 };
 
+export const mq = {
+  sm: `@media (min-width: ${breakpoints.sm})`,
+  md: `@media (min-width: ${breakpoints.md})`,
+  lg: `@media (min-width: ${breakpoints.lg})`,
+};
+
 const theme = {
   colors,
-  breakpoints,
+  mq,
 };
 
 export default theme;
