@@ -1,0 +1,29 @@
+{
+  "processors": [["stylelint-processor-styled-components", {
+    "moduleName": "styled-components",
+    "importName": "default",
+    "strict": false,
+    "ignoreFiles": [],
+    "parserPlugins": [
+      "jsx",
+      ["decorators", { "decoratorsBeforeExport": true }],
+      "classProperties",
+      "exportExtensions",
+      "functionBind",
+      "functionSent"
+    ]
+  }]],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "declaration-property-unit-blacklist": {"font-size": ["px"]},
+    "declaration-property-value-blacklist": {
+      "color":  ["/^#|(rgb*)[^,\\n]*((,[^,\\n]*){2,}$)/"],
+      "background-color":  ["/^#|(rgb*)[^,\\n]*((,[^,\\n]*){2,}$)/"],
+      "border":  ["/^#|(rgb*)[^,\\n]*((,[^,\\n]*){2,}$)/"],
+      "box-shadow":  ["/^#|(rgb*)[^,\\n]*((,[^,\\n]*){2,}$)/"]},
+    "no-descending-specificity": null
+  }
+}
