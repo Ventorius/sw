@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GlobalStyle from './globalStyles/globalStyles';
 
 import Landing from './pages/Landing';
-import People from './pages/People';
-import Person from './pages/Person';
+import Starships from './pages/Starships';
+import Starship from './pages/Starship';
 
 const Routes: FC = () => {
   return (
@@ -17,12 +17,12 @@ const Routes: FC = () => {
             <Landing />
           </Route>
 
-          <Route exact path="/people">
-            <People />
+          <Route exact path="/starships">
+            <Starships />
           </Route>
 
-          <Route path="/people/:id">
-            <Person />
+          <Route path="/starships/:id">
+            <Starship />
           </Route>
         </Switch>
       </Router>

@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
 import { colors } from 'globalStyles/theme';
 
 import { ReactComponent as SearchIcon } from 'assets/icons/search.svg';
@@ -59,13 +61,26 @@ const Search = styled.input`
 //endregion
 
 const SearchInput: FC = () => {
+  const [query, setQuery] = useState('');
+  const history = useHistory();
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    history.push(`/`);
+    console.log(query);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={(e) => onSubmit(e)}>
       <Button>
         <SearchIcon />
       </Button>
       <Box>
-        <Search placeholder="Search for Star Wars starships" />
+        <Search
+          placeholder="Search for Star Wars starships"
+          value={query}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setQuery(e.currentTarget.value)}
+        />
       </Box>
     </Form>
   );
