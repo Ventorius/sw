@@ -5,6 +5,8 @@ import { colors } from 'globalStyles/theme';
 import StarshipCard from 'components/StarshipCard';
 import Loader from 'components/Loader';
 
+//region styled
+
 const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -23,13 +25,14 @@ const Wrapper = styled.div`
   min-height: 500px;
 `;
 
+//endregion
+
 interface Props {
   starships: Starship[];
   isLoading: boolean;
 }
 
 const ChosenStarships: FC<Props> = ({ starships, isLoading }) => {
-  console.log(starships);
   return (
     <Wrapper>
       {isLoading ? (

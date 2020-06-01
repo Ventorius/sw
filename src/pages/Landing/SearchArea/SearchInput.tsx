@@ -66,8 +66,7 @@ const SearchInput: FC = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    history.push(`/`);
-    console.log(query);
+    history.push(`/starships?query=${query}`);
   };
 
   return (
