@@ -67,6 +67,7 @@ export const getCurrentStarship = (id = 2): AppThunk => async (dispatch): Promis
 
   try {
     const data = await starshipApi.getSingleStarship(id);
+    dispatch(setCurrentStarship(data));
     dispatch(setLoading(false));
   } catch (e) {
     dispatch(setLoading(false));
@@ -78,7 +79,8 @@ export const searchForStarship = (searchPhrase: string): AppThunk => async (disp
   dispatch(setLoading(true));
 
   try {
-    const data = await starshipApi.searchForStarship(searchPhrase);
+    const { results } = await starshipApi.searchForStarship(searchPhrase);
+    dispatch(setStarships(results));
     dispatch(setLoading(false));
   } catch (e) {
     dispatch(setLoading(false));

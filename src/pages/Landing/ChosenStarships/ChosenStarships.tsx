@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { colors } from 'globalStyles/theme';
 
 import StarshipCard from 'components/StarshipCard';
+import Loader from 'components/Loader';
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -13,19 +20,25 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  min-height: 500px;
 `;
 
 interface Props {
   starships: Starship[];
+  isLoading: boolean;
 }
 
-const ChosenStarships: FC<Props> = ({ starships }) => {
+const ChosenStarships: FC<Props> = ({ starships, isLoading }) => {
   console.log(starships);
   return (
     <Wrapper>
-      {starships.map((starship) => (
-        <StarshipCard key={starship.url} starship={starship} />
-      ))}
+      {isLoading ? (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      ) : (
+        starships.map((starship) => <StarshipCard key={starship.url} starship={starship} />)
+      )}
     </Wrapper>
   );
 };

@@ -5,7 +5,6 @@ import SearchArea from './SearchArea';
 import ChosenStarships from './ChosenStarships/ChosenStarships';
 
 import { RootState } from 'store';
-import Loader from 'components/Loader';
 import { getStarships } from 'modules/starshipsSlice';
 
 const Landing: FC = () => {
@@ -19,7 +18,7 @@ const Landing: FC = () => {
   return (
     <div>
       <SearchArea />
-      {isLoading ? <Loader /> : <ChosenStarships starships={starships.slice(0, 4)} />}
+      <ChosenStarships isLoading={isLoading} starships={starships.slice(0, 4)} />
     </div>
   );
 };
