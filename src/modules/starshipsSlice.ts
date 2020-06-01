@@ -44,7 +44,7 @@ const slice = createSlice({
   },
 });
 
-const { setLoading, setError } = slice.actions;
+const { setLoading, setError, setStarships, setCurrentStarship } = slice.actions;
 
 export default slice.reducer;
 
@@ -52,11 +52,13 @@ export const getStarships = (page = 1): AppThunk => async (dispatch): Promise<vo
   dispatch(setLoading(true));
 
   try {
-    const data = await starshipApi.getAllStarships(page);
-    setLoading(false);
+    const { results } = await starshipApi.getAllStarships(page);
+
+    dispatch(setStarships(results));
+    dispatch(setLoading(false));
   } catch (e) {
-    setLoading(false);
-    setError(true);
+    dispatch(setLoading(false));
+    dispatch(setError(true));
   }
 };
 
@@ -65,10 +67,10 @@ export const getCurrentStarship = (id = 2): AppThunk => async (dispatch): Promis
 
   try {
     const data = await starshipApi.getSingleStarship(id);
-    setLoading(false);
+    dispatch(setLoading(false));
   } catch (e) {
-    setLoading(false);
-    setError(true);
+    dispatch(setLoading(false));
+    dispatch(setError(true));
   }
 };
 
@@ -77,9 +79,9 @@ export const searchForStarship = (searchPhrase: string): AppThunk => async (disp
 
   try {
     const data = await starshipApi.searchForStarship(searchPhrase);
-    setLoading(false);
+    dispatch(setLoading(false));
   } catch (e) {
-    setLoading(false);
-    setError(true);
+    dispatch(setLoading(false));
+    dispatch(setError(true));
   }
 };

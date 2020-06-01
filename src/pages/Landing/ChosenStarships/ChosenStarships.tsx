@@ -15,12 +15,17 @@ const Wrapper = styled.div`
   padding-top: 50px;
 `;
 
-const ChosenStarships: FC = () => {
+interface Props {
+  starships: Starship[];
+}
+
+const ChosenStarships: FC<Props> = ({ starships }) => {
+  console.log(starships);
   return (
     <Wrapper>
-      <StarshipCard />
-      <StarshipCard />
-      <StarshipCard />
+      {starships.map((starship) => (
+        <StarshipCard key={starship.url} starship={starship} />
+      ))}
     </Wrapper>
   );
 };

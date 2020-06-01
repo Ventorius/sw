@@ -41,21 +41,28 @@ const SpecValue = styled.span`
 
 //endregion
 
-const BottomSection: FC = () => {
+interface Props {
+  crew: string;
+  length: string;
+  cargo: string;
+  manufacturer: string;
+}
+
+const BottomSection: FC<Props> = ({ crew, cargo, length, manufacturer }) => {
   return (
     <Wrapper>
       <InnerSection>
         <SpecSection>
-          Crew: <SpecValue>10-165</SpecValue>
+          Crew: <SpecValue>{crew}</SpecValue>
         </SpecSection>
         <SpecSection>
-          Length: <SpecValue>150</SpecValue>
+          Length: <SpecValue>{length}</SpecValue>
         </SpecSection>
         <SpecSection>
-          Cargo: <SpecValue>3000000</SpecValue>
+          Cargo: <SpecValue>{cargo}</SpecValue>
         </SpecSection>
         <SpecSection>
-          Manufacturer: <SpecValue>Corellian Engineering Corporation</SpecValue>
+          Manufacturer: <SpecValue>{manufacturer}</SpecValue>
         </SpecSection>
       </InnerSection>
     </Wrapper>

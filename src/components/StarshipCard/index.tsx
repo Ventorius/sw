@@ -59,6 +59,7 @@ const ShipName = styled.h3`
 const ShipClass = styled.h4`
   margin: 0;
   color: #6fd8ff;
+  text-transform: uppercase;
 `;
 
 const Separator = styled.div`
@@ -72,19 +73,23 @@ const ButtonSection = styled.div`
 
 //endregion
 
-const StarshipCard: FC = () => {
+interface Props {
+  starship: Starship;
+}
+
+const StarshipCard: FC<Props> = ({ starship: { name, starship_class, cargo_capacity, crew, length, manufacturer } }) => {
   return (
     <Wrapper>
       <Ribbon>
         <ShipSection>
-          <ShipName>CR90 corvette</ShipName> <Separator>-</Separator>
-          <ShipClass>Corvette</ShipClass>
+          <ShipName>{name}</ShipName> <Separator>-</Separator>
+          <ShipClass>{starship_class}</ShipClass>
         </ShipSection>
         <ButtonSection>
           <Button>View specs</Button>
         </ButtonSection>
       </Ribbon>
-      <BottomSection />
+      <BottomSection crew={crew} length={length} cargo={cargo_capacity} manufacturer={manufacturer} />
     </Wrapper>
   );
 };
