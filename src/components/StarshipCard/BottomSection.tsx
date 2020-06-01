@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { colors } from '../../globalStyles/theme';
 import { rgba } from 'polished';
+import numeral from 'numeral';
+
+import { colors } from '../../globalStyles/theme';
 
 //region styled
 
@@ -56,10 +58,10 @@ const BottomSection: FC<Props> = ({ crew, cargo, length, manufacturer }) => {
           Crew: <SpecValue>{crew}</SpecValue>
         </SpecSection>
         <SpecSection>
-          Length: <SpecValue>{length}</SpecValue>
+          Length: <SpecValue>{numeral(length).format('0,0')} m</SpecValue>
         </SpecSection>
         <SpecSection>
-          Cargo: <SpecValue>{cargo}</SpecValue>
+          Cargo: <SpecValue>{numeral(Number(cargo) / 1000).format('0,0')} t</SpecValue>
         </SpecSection>
         <SpecSection>
           Manufacturer: <SpecValue>{manufacturer}</SpecValue>
