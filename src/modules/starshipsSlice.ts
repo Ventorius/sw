@@ -6,6 +6,7 @@ interface State {
   isLoading: boolean;
   starships: Starship[];
   hasError: boolean;
+  hasNoResults: boolean;
   hasNext: boolean;
   currentStarship: Starship | null;
 }
@@ -14,6 +15,7 @@ const initialState: State = {
   isLoading: false,
   starships: [],
   hasError: false,
+  hasNoResults: false,
   hasNext: false,
   currentStarship: null,
 };
@@ -32,6 +34,11 @@ const slice = createSlice({
       return state;
     },
 
+    setNoResults: (state: State, action: PayloadAction<boolean>): State => {
+      state.hasNoResults = action.payload;
+      return state;
+    },
+
     setStarships: (state: State, action: PayloadAction<Starship[]>): State => {
       state.starships = action.payload;
       return state;
@@ -44,7 +51,7 @@ const slice = createSlice({
   },
 });
 
-const { setLoading, setError, setStarships, setCurrentStarship } = slice.actions;
+const { setLoading, setError, setStarships, setCurrentStarship, setNoResults } = slice.actions;
 
 export default slice.reducer;
 
@@ -77,10 +84,16 @@ export const getCurrentStarship = (id = 2): AppThunk => async (dispatch): Promis
 
 export const searchForStarship = (searchPhrase: string): AppThunk => async (dispatch): Promise<void> => {
   dispatch(setLoading(true));
+  dispatch(setNoResults(false));
 
   try {
     const { results } = await starshipApi.searchForStarship(searchPhrase);
     dispatch(setStarships(results));
+
+    if (results.length === 0) {
+      dispatch(setNoResults(true));
+    }
+
     dispatch(setLoading(false));
   } catch (e) {
     dispatch(setLoading(false));

@@ -43,9 +43,13 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button: FC = ({ children }) => {
+interface Props {
+  onClick?: () => void;
+}
+
+const Button: FC<Props> = ({ children, onClick }) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={onClick}>
       <span>{children}</span>
     </StyledButton>
   );

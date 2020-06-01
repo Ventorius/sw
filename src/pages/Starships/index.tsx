@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import qs from 'qs';
 
-import StarshipCard from 'components/StarshipCard';
-
-import { colors } from 'globalStyles/theme';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchForStarship } from 'modules/starshipsSlice';
 import { RootState } from 'store';
-import Loader from '../../components/Loader';
+
+import StarshipCard from 'components/StarshipCard';
+import Loader from 'components/Loader';
+import { colors } from 'globalStyles/theme';
+import { searchForStarship } from 'modules/starshipsSlice';
+import NoResults from './NoResults';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -30,7 +31,7 @@ const LoaderWrapper = styled.div`
 `;
 
 const Starships: FC = () => {
-  const { isLoading, hasError, starships } = useSelector((state: RootState) => state.starships);
+  const { isLoading, hasError, hasNoResults, starships } = useSelector((state: RootState) => state.starships);
   const dispatch = useDispatch();
 
   const { search } = useLocation();
@@ -46,6 +47,8 @@ const Starships: FC = () => {
         <LoaderWrapper>
           <Loader />
         </LoaderWrapper>
+      ) : hasNoResults ? (
+        <NoResults />
       ) : (
         starships.map((starship) => <StarshipCard key={starship.url} starship={starship} />)
       )}
