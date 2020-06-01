@@ -18,6 +18,7 @@ const Form = styled.form`
   width: 100%;
   max-width: 1200px;
   color: ${colors.black};
+  margin: 0 32px;
 `;
 
 const Button = styled.button`

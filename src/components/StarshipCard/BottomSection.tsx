@@ -58,7 +58,7 @@ interface Props {
 
 const BottomSection: FC<Props> = ({ crew, cargo, length, manufacturer }) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="bottom-section">
       <InnerSection>
         <SpecSection>
           Crew: <SpecValue>{crew}</SpecValue>
