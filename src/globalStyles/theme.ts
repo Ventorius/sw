@@ -2,6 +2,8 @@ export const colors = {
   black: '#0A0908',
   blue: '#2E3246',
   luminescentBlue: '#4CFFFF',
+  darkBlue: '#021320',
+  marine: '#225e5f',
   darkGray: 'rgba(0,0,0,.5)',
   semiGray: 'rgba(0,0,0,.2)',
   gray: '#f0f0f0',
@@ -10,10 +12,9 @@ export const colors = {
 };
 
 const breakpoints = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
 };
 
 export const mq = {

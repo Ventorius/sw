@@ -1,24 +1,30 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import { useHistory } from 'react-router-dom';
 
-import { colors } from 'globalStyles/theme';
+import { colors, mq } from 'globalStyles/theme';
 
 import Button from '../Button';
 import BottomSection from './BottomSection';
+
 import Hornet from 'assets/hornet.jpg';
-import { useHistory } from 'react-router-dom';
 
 //region styled
 
 const Wrapper = styled.div`
   height: 300px;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   border: 1px solid #1b4268;
-  margin-bottom: 80px;
+  margin-bottom: 180px;
   background-image: url(${Hornet});
   background-size: cover;
   position: relative;
+
+  ${mq.lg} {
+    margin-bottom: 80px;
+  }
 `;
 
 const Ribbon = styled.div`

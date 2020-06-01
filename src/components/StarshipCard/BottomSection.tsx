@@ -3,35 +3,41 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 import numeral from 'numeral';
 
-import { colors } from '../../globalStyles/theme';
+import { colors, mq } from '../../globalStyles/theme';
 
 //region styled
 
 const Wrapper = styled.div`
   position: absolute;
-  color: white;
+  color: ${colors.white};
   height: 31px;
   bottom: -31px;
   width: 100%;
 `;
 
 const InnerSection = styled.div`
-  background-color: #021320;
-  border: 1px solid #225e5f;
-  height: 100%;
+  background-color: ${colors.darkBlue};
+  border: 1px solid ${colors.marine};
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 20px;
   margin-right: 20px;
   justify-content: space-between;
+
+  ${mq.lg} {
+    flex-direction: row;
+  }
 `;
 
 const SpecSection = styled.div`
   display: flex;
   align-items: center;
   font-size: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   color: ${rgba(colors.luminescentBlue, 0.5)};
 `;
 

@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Hornet from 'assets/hornet.jpg';
-import { colors } from 'globalStyles/theme';
+import { colors, mq } from 'globalStyles/theme';
 import { rgba } from 'polished';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
@@ -25,18 +25,24 @@ const Wrapper = styled.div`
 
 const Image = styled.div`
   height: 300px;
-  width: 1000px;
+  max-width: 1000px;
+  width: 100%;
   border: 1px solid #1b4268;
   margin-bottom: 30px;
   background-image: url(${Hornet});
   background-size: cover;
-  position: relative;
+  background-position: center;
 `;
 
 const Specs = styled.ul`
   list-style-type: none;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   padding-inline-start: 0;
+  padding-left: 32px;
+  ${mq.lg} {
+    padding: 0px;
+  }
 `;
 
 const SpecRow = styled.li`
