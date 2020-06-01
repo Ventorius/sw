@@ -49,6 +49,7 @@ const Search = styled.input`
   padding-left: 14px;
   word-spacing: normal;
   font-size: 0.9rem;
+  font-family: 'Electrolize', sans-serif;
 
   :focus {
     outline: none;
