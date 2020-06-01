@@ -7,6 +7,7 @@ import { colors } from 'globalStyles/theme';
 import Button from '../Button';
 import BottomSection from './BottomSection';
 import Hornet from 'assets/hornet.jpg';
+import { useHistory } from 'react-router-dom';
 
 //region styled
 
@@ -77,7 +78,15 @@ interface Props {
   starship: Starship;
 }
 
-const StarshipCard: FC<Props> = ({ starship: { name, starship_class, cargo_capacity, crew, length, manufacturer } }) => {
+const StarshipCard: FC<Props> = ({ starship: { name, starship_class, cargo_capacity, crew, length, manufacturer, url } }) => {
+  const history = useHistory();
+
+  const goToSingleShipView = () => {
+    //id is second to last because there is some wonky, not visible element in the url somehow
+    const id = url.split('/').slice(-2, -1);
+    history.push(`/starships/${id}`);
+  };
+
   return (
     <Wrapper>
       <Ribbon>
@@ -86,7 +95,7 @@ const StarshipCard: FC<Props> = ({ starship: { name, starship_class, cargo_capac
           <ShipClass>{starship_class}</ShipClass>
         </ShipSection>
         <ButtonSection>
-          <Button>View specs</Button>
+          <Button onClick={goToSingleShipView}>View specs</Button>
         </ButtonSection>
       </Ribbon>
       <BottomSection crew={crew} length={length} cargo={cargo_capacity} manufacturer={manufacturer} />

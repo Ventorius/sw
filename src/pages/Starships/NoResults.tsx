@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { colors } from 'globalStyles/theme';
 import { useHistory } from 'react-router-dom';
-import Button from '../../components/Button';
+
+import { colors } from 'globalStyles/theme';
+import Button from 'components/Button';
 
 const Wrapper = styled.div`
   width: 100%;
