@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { rgba } from 'polished';
+
 import { colors } from 'globalStyles/theme';
+
+import Button from '../Button';
+import BottomSection from './BottomSection';
 import Hornet from 'assets/hornet.jpg';
 
 //region styled
@@ -9,20 +14,22 @@ const Wrapper = styled.div`
   height: 300px;
   width: 1000px;
   border: 1px solid #1b4268;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   background-image: url(${Hornet});
   background-size: cover;
+  position: relative;
 `;
 
 const Ribbon = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 16px;
   position: relative;
   height: 35px;
   top: 150px;
   color: ${colors.luminescentBlue};
-  background-color: ${colors.blue};
+  background-color: ${rgba(colors.blue, 0.7)};
 
   :before {
     display: block;
@@ -59,6 +66,10 @@ const Separator = styled.div`
   margin-left: 10px;
 `;
 
+const ButtonSection = styled.div`
+  padding-right: 25px;
+`;
+
 //endregion
 
 const StarshipCard: FC = () => {
@@ -69,7 +80,11 @@ const StarshipCard: FC = () => {
           <ShipName>CR90 corvette</ShipName> <Separator>-</Separator>
           <ShipClass>Corvette</ShipClass>
         </ShipSection>
+        <ButtonSection>
+          <Button>View specs</Button>
+        </ButtonSection>
       </Ribbon>
+      <BottomSection />
     </Wrapper>
   );
 };
